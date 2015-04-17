@@ -5,7 +5,7 @@ require 'scraper_tools/version'
 
 Gem::Specification.new do |s|
   s.name        = "scraper_tools"
-  s.version     = Bundler::VERSION
+  s.version     = ScraperTools::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Chris Zetter"]
   s.summary     = "A framework for scraping websites."
