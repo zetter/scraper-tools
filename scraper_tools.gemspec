@@ -2,14 +2,15 @@ lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
 require 'scraper_tools/version'
- 
+
 Gem::Specification.new do |s|
   s.name        = "scraper_tools"
   s.version     = Bundler::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Chris Zetter"]
- 
- 
+  s.summary     = "A framework for scraping websites."
+
+
   s.add_dependency "nokogiri"
   s.add_dependency "faraday"
 
