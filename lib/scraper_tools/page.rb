@@ -7,9 +7,9 @@ module ScraperTools
     def initialize(options)
       @url = options.fetch(:url)
       @content = options.fetch(:content, nil)
-      @cache = options.fetch(:cache, ScraperTools::Cache::Null.new)
+      @cache = options.fetch(:cache, ScraperTools.cache)
     end
-    
+
     def follow_links_to(klass, options)
       selector = options.fetch(:selector)
       css(selector).each do |element|
