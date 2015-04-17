@@ -18,5 +18,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "mocha"
  
   s.files        = Dir.glob("{lib}/**/*") + %w(LICENSE README.md CHANGELOG.md)
+  s.add_development_dependency "redis"
   s.require_path = 'lib'
 end

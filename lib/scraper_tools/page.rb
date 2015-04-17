@@ -7,6 +7,7 @@ module ScraperTools
     def initialize(options)
       @url = options.fetch(:url)
       @content = options.fetch(:content, nil)
+      @cache = options.fetch(:cache, ScraperTools::Cache::Null.new)
     end
     
     def follow_links_to(klass, options)
@@ -18,7 +19,9 @@ module ScraperTools
     end
 
     def content
-      @content ||= response.body
+      @cache.cache(@url) do
+        @content ||= response.body
+      end
     end
 
     def css(*args)
