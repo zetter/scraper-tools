@@ -1,16 +1,21 @@
+require 'zlib'
+
 module ScraperTools
   module Cache
     class Redis
       def initialize(client: client)
         @client = client
       end
-      
-      def cache(key)
-        value = @client.get(key)
 
-        if value.nil?
+      def cache(key)
+        compressed_data = @client.get(key)
+
+        if compressed_data
+          value = Zlib::Inflate.inflate(compressed_data)
+        else
           value = yield
-          @client.set(key, value)
+          compressed_data = Zlib::Deflate.deflate(value)
+          @client.set(key, compressed_data)
         end
 
         value
